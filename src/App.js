@@ -9,7 +9,7 @@ import Movie from './Movie';
 function App() {
   //tracks states
   const [allMovies, setAllMovies] = useState([]);
-  // const [filteredMovies, setAllFilteredMovies] = useState([]);
+  const [filteredMovies, setAllFilteredMovies] = useState([]);
   const {
     movieFormYearReleased, setMovieFormYearReleased,
     movieFormDirector, setMovieFormDirector,
@@ -27,13 +27,23 @@ function App() {
   //deletes a movie from the state array using index
   function handleDeleteMovie(title) {
     const index = allMovies.findIndex(movie => movie.title === title);
-
     //use this index to splice out that movie in state
     //the '1' after id means delete one item at that index
     allMovies.splice(index, 1);
 
     setAllMovies([...allMovies]);
   }
+
+  function handleFilterMovies(filter) {
+    //use the filter method to get an array of movies that title includes this filter argument
+    const currentFilteredMovies = allMovies.filter(movie => movie.title.includes(filter));
+    //if there is a filter argument, set the filtered movies to the filtered movies
+    setAllFilteredMovies
+      ? setAllFilteredMovies(currentFilteredMovies)
+    // if filter argument is undefined, set the filtered movies in state to just be the array of all movies
+      : setAllFilteredMovies(allMovies);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -56,10 +66,18 @@ function App() {
           director={movieFormDirector}
           year={movieFormYearReleased}
           color={movieFormColor}/>
+
         <p>Filter movies</p>
-        <input/>
-        <MovieList allMovies={allMovies}
-          handleDeleteMovie={handleDeleteMovie}/>
+        <input onChange={e => handleFilterMovies(e.target.value)}/>
+
+        <MovieList allMovies={
+          //this takes in an array of movies. 
+          //if the filteredMovies has a length, use that array. Otherwise, use the allMovies array
+          filteredMovies.length
+            ? filteredMovies
+            : allMovies
+        }
+        handleDeleteMovie={handleDeleteMovie}/>
       </div>
     </div>
   );
