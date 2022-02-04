@@ -80,7 +80,7 @@ function App() {
           color={movieFormColor}/>
 
         <p>Filter movies</p>
-        <input onChange={e => handleFilterMovies(e.target.value)}/>
+        <input value={currentQuery} onChange={(e) => setCurrentQuery(e.target.value)}/>
 
         <MovieList allMovies={
           //this takes in an array of movies. 
