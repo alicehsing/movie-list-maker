@@ -21,7 +21,7 @@ export default function MovieForm({
       title: movieFormTitle,
       director: movieFormDirector,
       year: movieFormYearReleased,
-      color: movieFormDirector
+      color: movieFormColor
     };
 
     //inject new movie object into the allMovies array in App.js
