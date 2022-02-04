@@ -24,7 +24,16 @@ function App() {
     setAllMovies(newAddedMovie);
   }
 
-  
+  //deletes a movie from the state array using index
+  function handleDeleteMovie(title) {
+    const index = allMovies.findIndex(movie => movie.title === title);
+
+    //use this index to splice out that movie in state
+    //the '1' after id means delete one item at that index
+    allMovies.splice(index, 1);
+
+    setAllMovies([...allMovies]);
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -49,7 +58,8 @@ function App() {
           color={movieFormColor}/>
         <p>Filter movies</p>
         <input/>
-        <MovieList allMovies={allMovies}/>
+        <MovieList allMovies={allMovies}
+          handleDeleteMovie={handleDeleteMovie}/>
       </div>
     </div>
   );
