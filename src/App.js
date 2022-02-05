@@ -73,12 +73,13 @@ function App() {
           setMovieFormColor={setMovieFormColor} 
           submitMovie={submitMovie} />
 
-        <Movie 
+        { movieFormTitle && <Movie 
           title={movieFormTitle}
           director={movieFormDirector}
           year={movieFormYearReleased}
           color={movieFormColor}/>
-
+        }
+        
         <p>Filter movies</p>
         <input value={currentQuery} onChange={(e) => setCurrentQuery(e.target.value)}/>
 
