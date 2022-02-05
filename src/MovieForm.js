@@ -36,7 +36,7 @@ export default function MovieForm({
 
   //on submit, call the handleSubmit() that will add a movie to state by calling props.submitMovie in the correct way.
   //on change for each input, call the appropriate state handler prop with the correct e.target.value to update App.js state.
-  return <form onSubmit={handleSubmit}>
+  return <form className='movie-form' onSubmit={handleSubmit}>
     <label>
           Title
       <input required value={movieFormTitle} onChange={e => setMovieFormTitle(e.target.value)} />
@@ -50,7 +50,7 @@ export default function MovieForm({
       <input required value={movieFormYearReleased} onChange={e => setMovieFormYearReleased(e.target.value)} />
     </label>
     <label>
-        Poster Background Color
+        Poster Color
       <select value={movieFormColor} onChange={e => setMovieFormColor(e.target.value)}>
         <option value='#fbf8cc'>Yellow</option>
         <option value='#fde4cf'>Orange</option>

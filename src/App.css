@@ -40,9 +40,28 @@
 
 .current-movie-section {
   margin: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .movie-item {
-  height: 100px;
+  height: 140px;
   width: 200px;
+  margin: 10px;
+}
+
+.movie-list {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
+
+form button {
+  margin-left: 40px;
+}
+
+form label {
+  margin: 10px;
 }
